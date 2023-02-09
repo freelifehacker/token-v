@@ -17,6 +17,17 @@ app.get("/", async (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
+app.get("/", async (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+
+app.get("/api/token", async (req, res) => {
+  //这里很关键的一句，表示发送的消息是以纯文本形式发送的
+  res.set('Content-Type','text/plain')
+  res.send(req.query.echostr)  
+});
+
 // 更新计数
 app.post("/api/count", async (req, res) => {
   const { action } = req.body;
